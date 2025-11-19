@@ -37,88 +37,111 @@ At its core, this project embodies two important aims:
 1. **Start Your Open Source Journey**: It's aimed to kickstart your open-source journey. Here, you'll learn the basics of Git and get a solid grip on the MERN stack and I strongly believe that learning and building should go hand in hand.
 2. **React Mastery**: Once you've got the basics down, a whole new adventure begins of mastering React. This project covers everything, from simple form validation to advanced performance enhancements. And I've planned much more cool stuff to add in the near future if the project hits more number of contributors.
 
-_We want you to get the most out of this project—it's all about learning, contributing, and growing in the open-source community._
-<hr>
+_We want you to get the most out of this project—it's all about learning, contributing, and growing in the open-source commun
 
-<div>
-  <h2><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/1ee5934a-27be-4502-a7bf-e6a8c78fe5a3" width="35" height="35"> Features</h2>
-</div>
+## Setting up the project locally
 
-- **Featured Posts :** Highlight top travel stories and destinations on the homepage to showcase the best content and inspire readers with exciting travel experiences.
-- **User-Friendly Interface:** Navigate effortlessly through captivating travel content with our intuitive design.
-- **Discover By topic categories:** **Discover by Topic Categories**: Explore diverse travel experiences categorized by travel, nature, city, Adventure and Beaches..
-  
-<hr>
+### Setting up the Backend
 
-<div>
-  <h2><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/90f3930e-5a12-4a4e-8ac9-0dc7d5396adb" width="35" height="35"> Ready to Contribute?</h2>
-</div>
+1. **Fork and Clone the Repository**
 
-Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
+   ```bash
+   git clone https://github.com/{your-username}/wanderlust.git
+   ```
 
-If you would like to contribute to the project, please follow our contribution guidelines.
+2. **Navigate to the Backend Directory**
 
-<hr>
-<!-- Open Source Programs -->
-  <div>
-    <h2><img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Flexed%20Biceps.png?raw=true" width="35" height="35" > Open Source Programs</h2>
-  </div>
+   ```bash
+   cd backend
+   ```
 
-  <table border="1" cellpadding="10">
-        <tr>
-            <td rowspan="2">
-                <img src="https://github.com/Meetjain1/wanderlust/assets/133582566/21b2bc42-bdd5-487a-a083-1b262c2f6d9b" alt="GSSOC Logo" width="100" height="55">
-            </td>
-            <td>
-                <strong>GSSOC 2024</strong>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                This project is part of GirlScript Summer of Code. We warmly welcome contributions from the community to help elevate Wanderlust.
-            </td>
-        </tr>
-    </table>
+3. **Install Required Dependencies**
 
-<hr>
+   ```bash
+   npm i
+   ```
 
-<!-- Code of conduct -->
-<div>
-<h2><img src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png" width="35" height="35"> Code of Conduct</h2>
-</div>
+4. **Set up your MongoDB Database**
 
-Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+   - Open MongoDB Compass and connect MongoDB locally at `mongodb://localhost:27017`.
 
-<hr>
+5. **Import sample data**
 
-<!-- License -->
-<div>
-<h2><img src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Page%20with%20Curl.png" width="35" height="35"> License</h2>
-</div>
+   > To populate the database with sample posts, you can copy the content from the `backend/data/sample_posts.json` file and insert it as a document in the `wanderlust/posts` collection in your local MongoDB database using either MongoDB Compass or `mongoimport`.
 
-This project is licensed under the [MIT License](./LICENSE).
+   ```bash
+   mongoimport --db wanderlust --collection posts --file ./data/sample_posts.json --jsonArray
+   ```
 
-<hr>
+6. **Configure Environment Variables**
 
-<div>
-  <h2><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/af38ec84-7387-4af7-af85-8f408a4654e9" width="35" height="35"> Show Your Support</h2>
-</div>
+   ```bash
+   cp .env.sample .env
+   ```
 
-If you find this project interesting and inspiring, please consider showing your support by starring it on GitHub! Your star goes a long way in helping me reach more developers and encourages me to keep enhancing the project.
+7. **Start the Backend Server**
 
-Feel free to get in touch with me for any further queries or support, happy to help :)
+   ```bash
+   npm start
+   ```
 
-<hr>
+   > You should see the following on your terminal output on successful setup.
+   >
+   > ```bash
+   > [BACKEND] Server is running on port 5000
+   > [BACKEND] Database connected: mongodb://127.0.0.1/wanderlust
+   > ```
 
- <!-- Cotributors -->
-<div>
-  <h2><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/20610b38-b287-4bf0-8f28-932b9c76163d" width="40" height="40"> Contributors</h2>
-</div>
+### Setting up the Frontend
 
-We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating Wanderlust to greater heights. 😊
+1. **Open a New Terminal**
 
-<div>
-<a href="https://github.com/krishnaacharyaa/wanderlust/graphs/contributors">
-  <img width="90%" src="https://contrib.rocks/image?repo=krishnaacharyaa/wanderlust" />
-</a>
-</div>
+   ```bash
+   cd frontend
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm i
+   ```
+
+3. **Configure Environment Variables**
+
+   ```bash
+   cp .env.sample .env.local
+   ```
+
+4. **Launch the Development Server**
+
+   ```bash
+   npm run dev
+   ```
+
+### Setting up with Docker
+
+1.  **Ensure Docker and Docker Compose are Installed**
+    
+2.  **Clone the Repository**
+    
+   ``` bash
+    
+    git clone https://github.com/{your-username}/wanderlust.git
+   ``` 
+3.  **Navigate to the Project Directory**
+    
+    ```bash
+    
+    cd wanderlust
+    
+    ```
+4.  **Update Environment Variables**  - If you anticipate the IP address of the instance might change, update the `.env.sample` file with the new IP address.
+
+5.  **Run Docker Compose**
+    
+    ```bash
+    
+    docker-compose up
+    ```
+    This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
+
