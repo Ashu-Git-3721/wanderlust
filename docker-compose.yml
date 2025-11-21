@@ -1,0 +1,46 @@
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  redis:
+    container_name: redis
+    image: redis:7.0.5-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    depends_on:
+      - mongo
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/.env.docker
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+      - redis
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file:
+      - ./frontend/.env.docker
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+
