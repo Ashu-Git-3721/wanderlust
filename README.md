@@ -118,30 +118,14 @@ _We want you to get the most out of this project—it's all about learning, cont
    npm run dev
    ```
 
-### Setting up with Docker
+## 🌟 Ready to Contribute?
 
-1.  **Ensure Docker and Docker Compose are Installed**
-    
-2.  **Clone the Repository**
-    
-   ``` bash
-    
-    git clone https://github.com/{your-username}/wanderlust.git
-   ``` 
-3.  **Navigate to the Project Directory**
-    
-    ```bash
-    
-    cd wanderlust
-    
-    ```
-4.  **Update Environment Variables**  - If you anticipate the IP address of the instance might change, update the `.env.sample` file with the new IP address.
+Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
 
-5.  **Run Docker Compose**
-    
-    ```bash
-    
-    docker-compose up
-    ```
-    This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
+## 💖 Show Your Support
+
+If you find this project interesting and inspiring, please consider showing your support by starring it on GitHub! Your star goes a long way in helping me reach more developers and encourages me to keep enhancing the project.
+
+🚀 Feel free to get in touch with me for any further queries or support, happy to help :)
+
 
