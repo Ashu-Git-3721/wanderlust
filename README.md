@@ -113,6 +113,11 @@
 4.  **Update Environment Variables**  - If you anticipate the IP address of the instance might change, update the `.env.sample` file with the new IP address.
 
 5.  **Run Docker Compose**
+
+- <b>Congratulations, your application is deployed on AWS EKS Cluster</b>
+     ![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
+    ![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
+
     
     ```bash
     
