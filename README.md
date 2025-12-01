@@ -132,6 +132,12 @@ docker-compose up --build
 This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
 
 - <b>Congratulations, your application is deployed </b>
-     ![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
-    ![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
+<img width="1919" height="993" alt="Screenshot 2025-12-01 230153" src="https://github.com/user-attachments/assets/ed1f0140-b6b1-41e9-9257-b42adc0f28ac" />
+
+
+
+<img width="1725" height="792" alt="Screenshot 2025-12-01 230849" src="https://github.com/user-attachments/assets/b95cfe11-704a-4ace-ba6b-e9b1ddda339c" />
+
+
+![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
 
