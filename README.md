@@ -5,6 +5,16 @@
 
 ![Preview Image](https://github.com/krishnaacharyaa/wanderlust/assets/116620586/17ba9da6-225f-481d-87c0-5d5a010a9538)
 
+## Technologies Used
+
+- **MongoDB**: NoSQL database for storing user and destination data.
+- **Express.js**: Backend framework for building RESTful APIs.
+- **React.js**: Frontend framework for building dynamic, interactive user interfaces.
+- **Node.js**: JavaScript runtime for the backend server.
+- **Docker**: Containerization platform to package the application and its dependencies.
+- **JWT**: Authentication using JSON Web Tokens.
+- **Redis**: In-memory data store used for caching and session management.
+
 
 ## Setting up the project locally
 
@@ -112,16 +122,16 @@
     ```
 4.  **Update Environment Variables**  - If you anticipate the IP address of the instance might change, update the `.env.sample` file with the new IP address.
 
-5.  **Run Docker Compose**
+5. **Run Docker Compose**
 
-- <b>Congratulations, your application is deployed on AWS EKS Cluster</b>
+```bash
+docker-compose up --build
+
+```
+
+This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
+
+- <b>Congratulations, your application is deployed </b>
      ![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
     ![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
-
-    
-    ```bash
-    
-    docker-compose up
-    ```
-    This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
 
