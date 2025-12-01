@@ -5,127 +5,110 @@
 
 ![Preview Image](https://github.com/krishnaacharyaa/wanderlust/assets/116620586/17ba9da6-225f-481d-87c0-5d5a010a9538)
 
-<hr>
+# Jenkins DevSecOps Pipeline
+This project sets up a DevSecOps pipeline using Jenkins with integrated tools for security and quality analysis. The pipeline includes SonarQube, Trivy, OWASP Dependency Check, and Docker to ensure code quality, security, and continuous integration.
 
-<div>
-  <h2>🔗 Important Links</h2>
-</div>
+<img width="1919" height="981" alt="stageing" src="https://github.com/user-attachments/assets/cf55ddd8-1190-47de-bf8b-fab8da478663" />
 
-<table border="1">
-  <tr>
-      <td><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/5ca6c472-5c73-41b2-a2df-389cc3e14881.png" alt="Discord Logo" width="50"></td>
-      <td><a href="https://discord.gg/FEKasAdCrG"> Join our project's Discord Channel here </a></td>
-  </tr>
-  <tr>
-      <td><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/ffda08c0-3c7a-46b0-b7ac-6bc374184ec7.png" alt="Figma Logo" width="50"></td>
-      <td><a href="https://www.figma.com/file/zqNcWGGKBo5Q2TwwVgR6G5/WanderLust--A-Travel-Blog-App?type=design&node-id=0%3A1&mode=design&t=c4oCG8N1Fjf7pxTt-1"> Find our project's Figma links here</a></td>
-  </tr>
-  <tr>
-      <td><img src="https://github.com/krishnaacharyaa/wanderlust/assets/133582566/47d71dd6-0390-479e-9d4e-3f077ef1a987.png" alt="YouTube Logo" width="50"></td>
-      <td><a href="https://youtu.be/ANfC1u_N_A0?feature=shared"> Find our Collaboration Video with TrainwithShubham here </a></td>
-  </tr>
-</table>
+# Tech stack used in this project:
+- GitHub (Code)
+- Docker (Containerization)
+- Jenkins (CI)
+- OWASP (Dependency check)
+- SonarQube (Quality)
+- Trivy (Filesystem Scan)
 
-<hr>
+### How pipeline will look after deployment:
+image
 
-<div>
-  <h2><img src="https://github.com/Meetjain1/wanderlust/assets/133582566/4a07b161-b8d6-4803-804a-3b0db699023e" width="35" height="35"> Goal of this project </h2>
-</div>
+Install & Configure Docker by using below command, "NewGrp docker" will refresh the group config hence no need to restart the EC2 machine.
 
-At its core, this project embodies two important aims:
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install docker.io -y
+sudo usermod -aG docker ubuntu && newgrp docker
+```
+#
+- <b id="Jenkins">Install and configure Jenkins (Master machine)</b>
+```bash
+sudo apt update -y
+sudo apt install fontconfig openjdk-17-jre -y
 
-1. **Start Your Open Source Journey**: It's aimed to kickstart your open-source journey. Here, you'll learn the basics of Git and get a solid grip on the MERN stack and I strongly believe that learning and building should go hand in hand.
-2. **React Mastery**: Once you've got the basics down, a whole new adventure begins of mastering React. This project covers everything, from simple form validation to advanced performance enhancements. And I've planned much more cool stuff to add in the near future if the project hits more number of contributors.
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+  
+sudo apt-get update -y
+sudo apt-get install jenkins -y
 
-_We want you to get the most out of this project—it's all about learning, contributing, and growing in the open-source community.
+```
+#
+- <b id="Sonar">Install and configure SonarQube </b>
+```bash
+docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+```
+#
+- <b id="Trivy">Install Trivy </b>
+```bash
+sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update -y
+sudo apt-get install trivy -y
+```
+## Steps to implement the project:
+- <b>Go to Jenkins Master and click on <mark> Manage Jenkins --> Plugins --> Available plugins</mark> install the below plugins:</b>
+  - OWASP
+  - SonarQube Scanner
+  - Docker
+  - Pipeline: Stage View
+#
+- <b id="Owasp">Configure OWASP, move to <mark>Manage Jenkins --> Plugins --> Available plugins</mark> (Jenkins Worker)</b>
+![image](https://github.com/user-attachments/assets/da6a26d3-f742-4ea8-86b7-107b1650a7c2)
 
-## Setting up the project locally
+- <b id="Sonar">After OWASP plugin is installed, Now move to <mark>Manage jenkins --> Tools</mark> (Jenkins Worker)</b>
+![image](https://github.com/user-attachments/assets/3b8c3f20-202e-4864-b3b6-b48d7a604ee8)
+#
+- <b>Login to SonarQube server and create the credentials for jenkins to integrate with SonarQube</b>
+  - Navigate to <mark>Administration --> Security --> Users --> Token</mark>
+  ![image](https://github.com/user-attachments/assets/86ad8284-5da6-4048-91fe-ac20c8e4514a)
+  ![image](https://github.com/user-attachments/assets/6bc671a5-c122-45c0-b1f0-f29999bbf751)
+  ![image](https://github.com/user-attachments/assets/e748643a-e037-4d4c-a9be-944995979c60)
 
-### Setting up the Backend
+#
+- <b>Now, go to <mark> Manage Jenkins --> credentials</mark> and add Sonarqube credentials:</b>
+![image](https://github.com/user-attachments/assets/0688e105-2170-4c3f-87a3-128c1a05a0b8)
+#
+- <b>Go to <mark> Manage Jenkins --> Tools</mark> and search for SonarQube Scanner installations:</b>
+![image](https://github.com/user-attachments/assets/2fdc1e56-f78c-43d2-914a-104ec2c8ea86)
+#
+- <b> Go to <mark> Manage Jenkins --> credentials</mark> and add Github credentials to push updated code from the pipeline:</b>
+![image](https://github.com/user-attachments/assets/4d0c1a47-621e-4aa2-a0b1-71927fcdaef4)
+> [!Note]
+> While adding github credentials add Personal Access Token in the password field.
+#
+- <b>Go to <mark> Manage Jenkins --> System</mark> and search for SonarQube installations:</b>
+![image](https://github.com/user-attachments/assets/ae866185-cb2b-4e83-825b-a125ec97243a)
+#
+- <b>Now again, Go to <mark> Manage Jenkins --> System</mark> and search for Global Trusted Pipeline Libraries:</b
+![image](https://github.com/user-attachments/assets/874b2e03-49b9-4c26-9b0f-bd07ce70c0f1)
+![image](https://github.com/user-attachments/assets/1ca83b43-ce85-4970-941d-9a819ce4ecfd)
+#
+- <b>Login to SonarQube server, go to <mark>Administration --> Webhook</mark> and click on create </b>
+![image](https://github.com/user-attachments/assets/16527e72-6691-4fdf-a8d2-83dd27a085cb)
+![image](https://github.com/user-attachments/assets/a8b45948-766a-49a4-b779-91ac3ce0443c)
 
-1. **Fork and Clone the Repository**
+- <b>Create a <mark>Wanderlust-CI/CD</mark> pipeline</b>
+![image](https://github.com/user-attachments/assets/55c7b611-3c20-445f-a49c-7d779894e232)
+![image](https://github.com/user-attachments/assets/ac79f7e6-c02c-4431-bb3b-5c7489a93a63)
 
-   ```bash
-   git clone https://github.com/{your-username}/wanderlust.git
-   ```
 
-2. **Navigate to the Backend Directory**
-
-   ```bash
-   cd backend
-   ```
-
-3. **Install Required Dependencies**
-
-   ```bash
-   npm i
-   ```
-
-4. **Set up your MongoDB Database**
-
-   - Open MongoDB Compass and connect MongoDB locally at `mongodb://localhost:27017`.
-
-5. **Import sample data**
-
-   > To populate the database with sample posts, you can copy the content from the `backend/data/sample_posts.json` file and insert it as a document in the `wanderlust/posts` collection in your local MongoDB database using either MongoDB Compass or `mongoimport`.
-
-   ```bash
-   mongoimport --db wanderlust --collection posts --file ./data/sample_posts.json --jsonArray
-   ```
-
-6. **Configure Environment Variables**
-
-   ```bash
-   cp .env.sample .env
-   ```
-
-7. **Start the Backend Server**
-
-   ```bash
-   npm start
-   ```
-
-   > You should see the following on your terminal output on successful setup.
-   >
-   > ```bash
-   > [BACKEND] Server is running on port 5000
-   > [BACKEND] Database connected: mongodb://127.0.0.1/wanderlust
-   > ```
-
-### Setting up the Frontend
-
-1. **Open a New Terminal**
-
-   ```bash
-   cd frontend
-   ```
-
-2. **Install Dependencies**
-
-   ```bash
-   npm i
-   ```
-
-3. **Configure Environment Variables**
-
-   ```bash
-   cp .env.sample .env.local
-   ```
-
-4. **Launch the Development Server**
-
-   ```bash
-   npm run dev
-   ```
-
-## 🌟 Ready to Contribute?
-
-Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
-
-## 💖 Show Your Support
-
-If you find this project interesting and inspiring, please consider showing your support by starring it on GitHub! Your star goes a long way in helping me reach more developers and encourages me to keep enhancing the project.
-
-🚀 Feel free to get in touch with me for any further queries or support, happy to help :)
-
+- <b>Congratulations, your application is running</b>
+![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
+![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
 
