@@ -25,21 +25,24 @@ https://github.com/Ashu-Git-3721/wanderlust.git
 ```bash
 kubectl get nodes
 ```
-![Alt text](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/nodes.png)
+
+<img width="600" height="222" alt="Screenshot 2025-12-03 125907" src="https://github.com/user-attachments/assets/38505845-278f-4f21-b646-baf64de1cda6" />
 
 #
 4) Create kubernetes namespace :
 ```bash
 kubectl create namespace wanderlust
 ```
-![Namespace](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/namespace%20create.png)
+
+<img width="800" height="226" alt="Screenshot 2025-12-03 131708" src="https://github.com/user-attachments/assets/7fed25f7-35d9-4332-9bc4-c7b55ca7afaa" />
 
 #
 5) Update kubernetes config context : 
 ```bash
 kubectl config set-context --current --namespace wanderlust
 ```
-![Update context](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/context%20wanderlust.png)
+
+<img width="800" height="229" alt="Screenshot 2025-12-03 131945" src="https://github.com/user-attachments/assets/a26cdd66-4cd7-4b6e-8911-b44242c029a0" />
 
 #
 6) Enable DNS resolution on kubernetes cluster :
@@ -49,7 +52,8 @@ kubectl config set-context --current --namespace wanderlust
 ```bash
 kubectl get pods -n kube-system -o wide | grep -i core
 ```
-![Alt text](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/get-coredns.png)
+
+<img width="700" height="524" alt="Screenshot 2025-12-03 132552" src="https://github.com/user-attachments/assets/0e4c8d56-4394-479d-9f0a-37b274cba75e" />
 
 - Above step will run coredns pod on worker node as well for DNS resolution
 
@@ -71,12 +75,14 @@ cd frontend
 ```bash
 vi .env.docker
 ```
-![IP](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/frontend.env.docker.png)
+
+<img width="500" height="58" alt="Screenshot 2025-12-03 133026" src="https://github.com/user-attachments/assets/4789d1cd-4cc5-468d-a4cb-40060c6ee93e" />
+
 
 #
 9) Build frontend docker image : 
 ```bash
-docker build -t madhupdevops/frontend-wanderlust:v2.1.8 .
+docker build -t ashutosh3721/frontend-wanderlust:v2.1.8 .
 ```
 ![Dockerfile frontend](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/docker%20frontend%20build.png)
 
@@ -95,12 +101,13 @@ cd ../backend/
 
 > Note: To get service names, check <u>mongodb.yaml, redis.yaml</u>
 
-![Backend env file](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/backend.env.docker.png)
+
+<img width="600" height="590" alt="Screenshot 2025-12-03 131121" src="https://github.com/user-attachments/assets/50d05b53-6842-4486-b9c9-615c46996744" />
 
 #
 12) Build backend docker image : 
 ```bash
-docker build -t madhupdevops/backend-wanderlust:v2.1.8 .
+docker build -t ashutosh3721/backend-wanderlust:v2.1.8 .
 ```
 ![Backend dockerfile](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/docker%20backend%20build.png)
 
@@ -119,8 +126,8 @@ docker login
 ![docker login](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/docker%20login.png)
 
 ```bash
-docker push madhupdevops/frontend-wanderlust:v2.1.8
-docker push madhupdevops/backend-wanderlust:v2.1.8
+docker push ashutosh3721/frontend-wanderlust:v2.1.8
+docker push ashutosh3721/backend-wanderlust:v2.1.8
 ```
 
 #
