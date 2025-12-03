@@ -26,7 +26,8 @@ https://github.com/Ashu-Git-3721/wanderlust.git
 kubectl get nodes
 ```
 
-<img width="600" height="222" alt="Screenshot 2025-12-03 125907" src="https://github.com/user-attachments/assets/38505845-278f-4f21-b646-baf64de1cda6" />
+<img width="600" height="205" alt="Screenshot 2025-12-03 155100" src="https://github.com/user-attachments/assets/fb10f54f-2303-4724-afdb-7906002a8488" />
+
 
 #
 4) Create kubernetes namespace :
@@ -143,38 +144,44 @@ cd ../kubernetes
     ```bash
     kubectl apply -f persistentVolume.yaml 
     ```
-    ![Peristent volume](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/pv.png)
+    <img width="600" height="156" alt="Screenshot 2025-12-03 155310" src="https://github.com/user-attachments/assets/57212284-85af-4d24-abc7-8e5f0f1a7f81" />
+
 
     - Create persistent volume Claim :
     ```bash
     kubectl apply -f persistentVolumeClaim.yaml 
     ```
-    ![Peristent volume Claim](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/pvc.png)
+    <img width="600" height="156" alt="Screenshot 2025-12-03 155651" src="https://github.com/user-attachments/assets/20882bfc-f7fa-4632-aa12-8099e3b75a42" />
+
 
     - Create MongoDB deployment and service :
     ```bash
     kubectl apply -f mongodb.yaml 
     ```
-    ![MongoDb](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/mongo.png)
+    <img width="600" height="207" alt="Screenshot 2025-12-03 155854" src="https://github.com/user-attachments/assets/fe39b3b1-91b1-42c3-b250-9a4761eb9822" />
 
     - Create Redis deployment and service :
     > Note: Wait for 3-4 mins to get mongodb, redis pods and service should be up, otherwise backend-service will not connect.
     ```bash
     kubectl apply -f redis.yaml 
     ```
-    ![Redis](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/redis.png)
+    <img width="600" height="213" alt="Screenshot 2025-12-03 160116" src="https://github.com/user-attachments/assets/879856ed-fa11-48e2-82aa-9a75791fbaf8" />
+
 
     - Create Backend deployment and service :
     ```bash
     kubectl apply -f backend.yaml 
     ```
-    ![Backend](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/backend.png)
+    <img width="600" height="209" alt="k8s2" src="https://github.com/user-attachments/assets/ccadbd30-dbac-493d-a0cd-20024324cc26" />
+
+
 
     - Create Frontend deployment and service :
     ```bash
     kubectl apply -f frontend.yaml
     ```
-    ![Frontend](https://github.com/DevMadhup/wanderlust/blob/devops/kubernetes/assets/frontend.png)
+    
+    <img width="600" height="210" alt="Screenshot 2025-12-03 160334" src="https://github.com/user-attachments/assets/cb73c73b-f01d-44d2-98ae-c2cbd471c971" />
 
 #
 17)  Check all deployments and services :
