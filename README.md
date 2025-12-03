@@ -17,7 +17,7 @@ sudo su
 #
 2) Clone code from remote repository (GitHub) :
 ```bash
-git clone -b devops https://github.com/DevMadhup/wanderlust.git
+https://github.com/Ashu-Git-3721/wanderlust.git
 ```
 
 #
